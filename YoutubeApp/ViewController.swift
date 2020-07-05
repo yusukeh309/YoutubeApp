@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         
         videoListCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         // Do any additional setup after loading the view.
+        
     }
 
 }
