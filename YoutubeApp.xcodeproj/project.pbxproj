@@ -13,6 +13,7 @@
 		7C26DA6C24B5965800CB29B9 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C26DA6B24B5965800CB29B9 /* VideoListCell.xib */; };
 		7C2E60B224BACC2100D3DCDC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E60B124BACC2100D3DCDC /* Video.swift */; };
 		7C2E60B424BAE5BB00D3DCDC /* Chnnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E60B324BAE5BB00D3DCDC /* Chnnel.swift */; };
+		7C2E60B724BB000200D3DCDC /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E60B624BB000200D3DCDC /* APIRequest.swift */; };
 		7CE584CD24B1F19300281866 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE584CC24B1F19300281866 /* AppDelegate.swift */; };
 		7CE584CF24B1F19300281866 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE584CE24B1F19300281866 /* SceneDelegate.swift */; };
 		7CE584D124B1F19300281866 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE584D024B1F19300281866 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		7C26DA6B24B5965800CB29B9 /* VideoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
 		7C2E60B124BACC2100D3DCDC /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		7C2E60B324BAE5BB00D3DCDC /* Chnnel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chnnel.swift; sourceTree = "<group>"; };
+		7C2E60B624BB000200D3DCDC /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		7CE584C924B1F19300281866 /* YoutubeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE584CC24B1F19300281866 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CE584CE24B1F19300281866 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7C2E60B524BAFFF000D3DCDC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7C2E60B624BB000200D3DCDC /* APIRequest.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		7CE584C024B1F19300281866 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +169,7 @@
 		7CE584CB24B1F19300281866 /* YoutubeApp */ = {
 			isa = PBXGroup;
 			children = (
+				7C2E60B524BAFFF000D3DCDC /* Utility */,
 				7C2E60B024BACC1500D3DCDC /* Models */,
 				7C26DA6A24B5964200CB29B9 /* Xibs */,
 				7C26DA6724B595B200CB29B9 /* Cells */,
@@ -445,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE584D124B1F19300281866 /* ViewController.swift in Sources */,
+				7C2E60B724BB000200D3DCDC /* APIRequest.swift in Sources */,
 				7C26DA6924B595C900CB29B9 /* VideoListCell.swift in Sources */,
 				7CE584CD24B1F19300281866 /* AppDelegate.swift in Sources */,
 				7CE584CF24B1F19300281866 /* SceneDelegate.swift in Sources */,
