@@ -7,7 +7,7 @@ target 'YoutubeApp' do
 
   # Pods for YoutubeApp
   pod 'Alamofire', '~> 5.2'
-
+  pod 'Nuke'
 
   target 'YoutubeAppTests' do
     inherit! :search_paths

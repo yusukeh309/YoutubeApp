@@ -16,14 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="324" height="380"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GPs-dB-FPq">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GPs-dB-FPq">
                         <rect key="frame" x="0.0" y="15" width="324" height="280"/>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="280" id="pXj-MC-P4W"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9lC-tG-YAc">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9lC-tG-YAc">
                         <rect key="frame" x="10" y="305" width="40" height="40"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -40,7 +40,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="説明文がここにはります" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fy6-M1-wUR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="説明文がここにはります" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fy6-M1-wUR">
                                 <rect key="frame" x="0.0" y="18" width="254" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,6 +63,9 @@
             <size key="customSize" width="324" height="380"/>
             <connections>
                 <outlet property="channelImageView" destination="9lC-tG-YAc" id="zfJ-4E-xWT"/>
+                <outlet property="descriptionLabel" destination="Fy6-M1-wUR" id="XGf-98-Q6I"/>
+                <outlet property="thumbnailImageView" destination="GPs-dB-FPq" id="DzW-BQ-wiq"/>
+                <outlet property="titleLabel" destination="oQP-Cm-mFc" id="Elf-VZ-QnE"/>
             </connections>
             <point key="canvasLocation" x="178.2608695652174" y="93.080357142857139"/>
         </collectionViewCell>
