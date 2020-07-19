@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7an-4e-cbg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3zE-l4-0oS">
                                     <size key="itemSize" width="128" height="128"/>
@@ -36,23 +36,88 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-Z1-fac">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YouTube_icon" translatesAutoresizingMaskIntoConstraints="NO" id="WyN-s1-Arh">
+                                        <rect key="frame" x="10" y="5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ROy-yV-REV"/>
+                                            <constraint firstAttribute="width" constant="50" id="Ydn-2A-Fje"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouTube" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpT-cm-PwX">
+                                        <rect key="frame" x="63" y="18" width="81" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kylie_irving" translatesAutoresizingMaskIntoConstraints="NO" id="Med-sn-Tb4">
+                                        <rect key="frame" x="364" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Med-sn-Tb4" secondAttribute="height" multiplier="1:1" id="R0k-Yc-jcr"/>
+                                            <constraint firstAttribute="width" constant="40" id="biv-KI-ehg"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoA-sW-eMp">
+                                        <rect key="frame" x="336" y="17.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="IB8-93-Q5p"/>
+                                            <constraint firstAttribute="width" secondItem="CoA-sW-eMp" secondAttribute="height" multiplier="1:1" id="mTn-Gm-406"/>
+                                        </constraints>
+                                        <state key="normal" image="search"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GF9-Nc-0cI">
+                                        <rect key="frame" x="308" y="17.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="GF9-Nc-0cI" secondAttribute="height" multiplier="1:1" id="0mT-PH-NmL"/>
+                                            <constraint firstAttribute="width" constant="25" id="cuc-7z-zzm"/>
+                                        </constraints>
+                                        <state key="normal" image="movie-icon"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="CoA-sW-eMp" firstAttribute="centerY" secondItem="xfZ-Z1-fac" secondAttribute="centerY" id="4PG-Yo-LZ8"/>
+                                    <constraint firstItem="GF9-Nc-0cI" firstAttribute="centerY" secondItem="xfZ-Z1-fac" secondAttribute="centerY" id="6AX-cU-kb3"/>
+                                    <constraint firstItem="WyN-s1-Arh" firstAttribute="leading" secondItem="xfZ-Z1-fac" secondAttribute="leading" constant="10" id="DlM-rW-6Rm"/>
+                                    <constraint firstItem="WyN-s1-Arh" firstAttribute="centerY" secondItem="xfZ-Z1-fac" secondAttribute="centerY" id="Gbd-1Q-e8f"/>
+                                    <constraint firstItem="Med-sn-Tb4" firstAttribute="centerY" secondItem="xfZ-Z1-fac" secondAttribute="centerY" id="Imz-o0-OXW"/>
+                                    <constraint firstItem="CpT-cm-PwX" firstAttribute="leading" secondItem="WyN-s1-Arh" secondAttribute="trailing" constant="3" id="KAc-10-SZ6"/>
+                                    <constraint firstAttribute="height" constant="60" id="jGy-ft-1wU"/>
+                                    <constraint firstItem="Med-sn-Tb4" firstAttribute="leading" secondItem="CoA-sW-eMp" secondAttribute="trailing" constant="3" id="lTO-FN-WgJ"/>
+                                    <constraint firstItem="CoA-sW-eMp" firstAttribute="leading" secondItem="GF9-Nc-0cI" secondAttribute="trailing" constant="3" id="ldY-N1-Ha0"/>
+                                    <constraint firstItem="CpT-cm-PwX" firstAttribute="centerY" secondItem="xfZ-Z1-fac" secondAttribute="centerY" id="lzt-i3-3ao"/>
+                                    <constraint firstAttribute="trailing" secondItem="Med-sn-Tb4" secondAttribute="trailing" constant="10" id="tl5-Ar-2fF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="7an-4e-cbg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AFt-HH-7Lu"/>
+                            <constraint firstItem="7an-4e-cbg" firstAttribute="top" secondItem="xfZ-Z1-fac" secondAttribute="bottom" id="AFt-HH-7Lu"/>
+                            <constraint firstItem="xfZ-Z1-fac" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EQL-rw-Vh4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7an-4e-cbg" secondAttribute="trailing" id="LKD-x4-fUe"/>
                             <constraint firstItem="7an-4e-cbg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xco-hN-kpv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7an-4e-cbg" secondAttribute="bottom" id="ejd-Q4-ne1"/>
+                            <constraint firstItem="xfZ-Z1-fac" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hQK-kY-Zia"/>
+                            <constraint firstItem="xfZ-Z1-fac" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="szd-AA-Hbs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="profileImageView" destination="Med-sn-Tb4" id="ySe-dW-C73"/>
                         <outlet property="videoListCollectionView" destination="7an-4e-cbg" id="Qze-1H-fQq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="YouTube_icon" width="256" height="256"/>
+        <image name="kylie_irving" width="678" height="452"/>
+        <image name="movie-icon" width="256" height="256"/>
+        <image name="search" width="256" height="256"/>
+    </resources>
 </document>

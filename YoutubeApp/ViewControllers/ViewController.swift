@@ -12,6 +12,7 @@ import Alamofire
 class ViewController: UIViewController {
 
     @IBOutlet weak var videoListCollectionView: UICollectionView!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     private let cellId = "cellId"
     private var videoItems = [Item]()
@@ -24,13 +25,15 @@ class ViewController: UIViewController {
         
         videoListCollectionView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellWithReuseIdentifier: cellId)
         
+        profileImageView.layer.cornerRadius = 20
+        
         fetchYoutubeSerachInfo()
     }
     
     private func fetchYoutubeSerachInfo() {
         let params = ["q": "lebronjames"]
 
-        APIRequest.shared.request(path: .search, params: params, type: Video.self) { (video) in
+        API.shared.request(path: .search, params: params, type: Video.self) { (video) in
             self.videoItems = video.items
             let id = self.videoItems[0].snippet.channelId
             self.fetchYoutubeChannelInfo(id: id)
@@ -43,7 +46,7 @@ class ViewController: UIViewController {
             "id": id
         ]
         
-        APIRequest.shared.request(path: .channels, params: params, type: Channel.self) { (channel) in
+        API.shared.request(path: .channels, params: params, type: Channel.self) { (channel) in
             self.videoItems.forEach { (item) in
                 item.channel = channel
             }

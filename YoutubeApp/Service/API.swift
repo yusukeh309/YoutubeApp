@@ -9,14 +9,14 @@
 import Foundation
 import Alamofire
 
-class APIRequest {
+class API {
     
     enum PathType: String {
         case search
         case channels
     }
     
-    static var shared = APIRequest()
+    static let shared = API()
     
     private let baseUrl = "https://www.googleapis.com/youtube/v3/"
     
@@ -26,21 +26,26 @@ class APIRequest {
         let url = baseUrl + path + "?"
         
         var params = params
-        params["key"] = "AIzaSyB0mZ_WfQqmN7GNuxiGBjlMKS-ZpRGEd2E"
+        // GCPで設定済みのkeyを入力
+        params["key"] = "AIzaSyAIiTPx-zFrncF9yF3Qcf6U9zbfYhDrm_o"
         params["part"] = "snippet"
         
         let request = AF.request(url, method: .get, parameters: params)
         
         request.responseJSON { (response) in
-            do {
-                guard let data = response.data else { return }
-                let decode = JSONDecoder()
-                let value = try decode.decode(T.self, from: data)
-                
-                completion(value)
-            } catch {
-                print("変換に失敗しました。: ", error)
+            guard let statusCode = response.response?.statusCode else { return }
+            if statusCode <= 300 {
+                do {
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let value = try decoder.decode(T.self, from: data)
+                    
+                    completion(value)
+                } catch {
+                    print("変換に失敗しました。: ", error)
+                }
             }
+
         }
     }
     
