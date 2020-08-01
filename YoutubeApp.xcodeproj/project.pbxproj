@@ -21,6 +21,9 @@
 		7C2E60B224BACC2100D3DCDC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E60B124BACC2100D3DCDC /* Video.swift */; };
 		7C2E60B424BAE5BB00D3DCDC /* Chnnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E60B324BAE5BB00D3DCDC /* Chnnel.swift */; };
 		7C2E60B724BB000200D3DCDC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E60B624BB000200D3DCDC /* API.swift */; };
+		7C34CF5B24D6200800160445 /* AttentionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34CF5A24D6200800160445 /* AttentionCell.swift */; };
+		7C34CF5D24D624C400160445 /* AttentionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34CF5C24D624C400160445 /* AttentionCollectionViewCell.swift */; };
+		7C34CF5F24D624EE00160445 /* AttentionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C34CF5E24D624EE00160445 /* AttentionCollectionViewCell.xib */; };
 		7CE584CD24B1F19300281866 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE584CC24B1F19300281866 /* AppDelegate.swift */; };
 		7CE584CF24B1F19300281866 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE584CE24B1F19300281866 /* SceneDelegate.swift */; };
 		7CE584D124B1F19300281866 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE584D024B1F19300281866 /* ViewController.swift */; };
@@ -65,6 +68,9 @@
 		7C2E60B124BACC2100D3DCDC /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		7C2E60B324BAE5BB00D3DCDC /* Chnnel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chnnel.swift; sourceTree = "<group>"; };
 		7C2E60B624BB000200D3DCDC /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		7C34CF5A24D6200800160445 /* AttentionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionCell.swift; sourceTree = "<group>"; };
+		7C34CF5C24D624C400160445 /* AttentionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionCollectionViewCell.swift; sourceTree = "<group>"; };
+		7C34CF5E24D624EE00160445 /* AttentionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttentionCollectionViewCell.xib; sourceTree = "<group>"; };
 		7CE584C924B1F19300281866 /* YoutubeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE584CC24B1F19300281866 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CE584CE24B1F19300281866 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				7C26DA6824B595C900CB29B9 /* VideoListCell.swift */,
+				7C34CF5A24D6200800160445 /* AttentionCell.swift */,
+				7C34CF5C24D624C400160445 /* AttentionCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				7C26DA6B24B5965800CB29B9 /* VideoListCell.xib */,
+				7C34CF5E24D624EE00160445 /* AttentionCollectionViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -372,6 +381,7 @@
 				7CE584D924B1F19400281866 /* LaunchScreen.storyboard in Resources */,
 				7C138CDC24C4211000C4DB2F /* Channel.storyboard in Resources */,
 				7C26DA6C24B5965800CB29B9 /* VideoListCell.xib in Resources */,
+				7C34CF5F24D624EE00160445 /* AttentionCollectionViewCell.xib in Resources */,
 				7CE584D624B1F19400281866 /* Assets.xcassets in Resources */,
 				7C138CE024C4213900C4DB2F /* Library.storyboard in Resources */,
 				7C138CD124C410E300C4DB2F /* BaseTabBar.storyboard in Resources */,
@@ -507,8 +517,10 @@
 			files = (
 				7C138CD324C4153D00C4DB2F /* BaseTabBarController.swift in Sources */,
 				7CE584D124B1F19300281866 /* ViewController.swift in Sources */,
+				7C34CF5D24D624C400160445 /* AttentionCollectionViewCell.swift in Sources */,
 				7C2E60B724BB000200D3DCDC /* API.swift in Sources */,
 				7C26DA6924B595C900CB29B9 /* VideoListCell.swift in Sources */,
+				7C34CF5B24D6200800160445 /* AttentionCell.swift in Sources */,
 				7C138CD724C4178900C4DB2F /* UIImage-Extension.swift in Sources */,
 				7CE584CD24B1F19300281866 /* AppDelegate.swift in Sources */,
 				7CE584CF24B1F19300281866 /* SceneDelegate.swift in Sources */,
