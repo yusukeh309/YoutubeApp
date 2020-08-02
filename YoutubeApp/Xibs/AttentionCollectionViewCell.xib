@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="201" height="259"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6yY-MX-OJE">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6yY-MX-OJE">
                         <rect key="frame" x="0.0" y="0.0" width="201" height="100"/>
                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -26,7 +26,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6q9-J3-OoV">
                         <rect key="frame" x="0.0" y="100" width="201" height="80"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ビデオのタイトルがここに" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azi-hd-my5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ビデオのタイトルがここに" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azi-hd-my5">
                                 <rect key="frame" x="0.0" y="0.0" width="201" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="MeF-rq-8rp"/>
@@ -67,7 +67,10 @@
             </collectionViewCellContentView>
             <size key="customSize" width="201" height="259"/>
             <connections>
+                <outlet property="channelTitleLabel" destination="cgb-Do-KhY" id="mtm-lM-rhg"/>
+                <outlet property="descriptionLabel" destination="Q7r-7P-T3e" id="N6x-Fd-UjE"/>
                 <outlet property="thumbnailImageView" destination="6yY-MX-OJE" id="vMz-T2-k95"/>
+                <outlet property="videoTitleLabel" destination="azi-hd-my5" id="565-hH-cqg"/>
             </connections>
             <point key="canvasLocation" x="170.28985507246378" y="132.25446428571428"/>
         </collectionViewCell>

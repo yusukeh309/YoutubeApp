@@ -27,7 +27,7 @@ class API {
         
         var params = params
         // GCPで設定済みのkeyを入力
-        params["key"] = "AIzaSyCVv8YVUqDl7f64xFXg71SZzHwQAGuTCiI"
+        params["key"] = "AIzaSyDZFyfuzvoZDA7iJ4inu8GIoI3jFf-5yt0"
         params["part"] = "snippet"
         
         let request = AF.request(url, method: .get, parameters: params)
