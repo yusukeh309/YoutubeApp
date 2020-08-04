@@ -10,12 +10,20 @@
         <!--Video View Controller-->
         <scene sceneID="GnO-9z-86w">
             <objects>
-                <viewController storyboardIdentifier="VideoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cmz-2h-0fT" customClass="VideoViewController" customModule="YoutubeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cmz-2h-0fT" customClass="VideoViewController" customModule="YoutubeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4BA-kQ-VK0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="40S-6U-dFd">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeF-zQ-eb3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7d-RZ-5ce">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="40S-6U-dFd">
                                 <rect key="frame" x="0.0" y="44" width="414" height="280"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -42,10 +50,10 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcL-s7-Xpf">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wcL-s7-Xpf">
                                         <rect key="frame" x="10" y="56.5" width="394" height="45"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H45-eE-uc8">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H45-eE-uc8">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -54,16 +62,16 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JL4-LW-Vdf">
-                                                <rect key="frame" x="45" y="0.0" width="249" height="45"/>
+                                                <rect key="frame" x="53" y="0.0" width="233" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="チャンネル名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqJ-vh-Z64">
-                                                        <rect key="frame" x="0.0" y="0.0" width="249" height="22.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="233" height="22.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="チャンネル登録者数 1.20万人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nb-E5-y2I">
-                                                        <rect key="frame" x="0.0" y="22.5" width="249" height="22.5"/>
+                                                        <rect key="frame" x="0.0" y="22.5" width="233" height="22.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -98,17 +106,33 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="p7d-RZ-5ce" secondAttribute="bottom" id="08w-dS-FRb"/>
                             <constraint firstItem="raJ-3g-I0C" firstAttribute="trailing" secondItem="cFR-Sg-kQ7" secondAttribute="trailing" id="4xF-za-54a"/>
+                            <constraint firstItem="p7d-RZ-5ce" firstAttribute="top" secondItem="cFR-Sg-kQ7" secondAttribute="top" id="5va-j2-W84"/>
                             <constraint firstItem="cFR-Sg-kQ7" firstAttribute="trailing" secondItem="40S-6U-dFd" secondAttribute="trailing" id="AW9-aU-nJT"/>
                             <constraint firstItem="40S-6U-dFd" firstAttribute="top" secondItem="cFR-Sg-kQ7" secondAttribute="top" id="HFD-AM-dlD"/>
+                            <constraint firstAttribute="bottom" secondItem="KeF-zQ-eb3" secondAttribute="bottom" id="JUG-0w-hlH"/>
                             <constraint firstItem="raJ-3g-I0C" firstAttribute="leading" secondItem="cFR-Sg-kQ7" secondAttribute="leading" id="MM4-FH-DrU"/>
+                            <constraint firstItem="p7d-RZ-5ce" firstAttribute="trailing" secondItem="cFR-Sg-kQ7" secondAttribute="trailing" id="Pnc-e3-l60"/>
                             <constraint firstItem="40S-6U-dFd" firstAttribute="leading" secondItem="cFR-Sg-kQ7" secondAttribute="leading" id="R7r-aA-Rtn"/>
+                            <constraint firstItem="p7d-RZ-5ce" firstAttribute="leading" secondItem="cFR-Sg-kQ7" secondAttribute="leading" id="YGB-9M-mNU"/>
+                            <constraint firstItem="KeF-zQ-eb3" firstAttribute="trailing" secondItem="cFR-Sg-kQ7" secondAttribute="trailing" id="c74-cv-FrK"/>
+                            <constraint firstItem="KeF-zQ-eb3" firstAttribute="top" secondItem="4BA-kQ-VK0" secondAttribute="top" id="cBI-9E-HNm"/>
+                            <constraint firstItem="KeF-zQ-eb3" firstAttribute="leading" secondItem="cFR-Sg-kQ7" secondAttribute="leading" id="kve-pb-o0f"/>
                             <constraint firstItem="raJ-3g-I0C" firstAttribute="top" secondItem="40S-6U-dFd" secondAttribute="bottom" id="x3F-C8-oRm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cFR-Sg-kQ7"/>
                     </view>
+                    <connections>
+                        <outlet property="backView" destination="p7d-RZ-5ce" id="Cjx-XA-hCa"/>
+                        <outlet property="baseBackGroundView" destination="KeF-zQ-eb3" id="Rh3-QO-Qa5"/>
+                        <outlet property="channelImageView" destination="H45-eE-uc8" id="WYf-Rr-MYc"/>
+                        <outlet property="channelTitleLabel" destination="cqJ-vh-Z64" id="H9e-xk-iwy"/>
+                        <outlet property="videoImageView" destination="40S-6U-dFd" id="4PW-XN-Tq9"/>
+                        <outlet property="videoTitleLabel" destination="2aS-rh-Lg7" id="pKq-9q-TZf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zol-Fa-fli" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
