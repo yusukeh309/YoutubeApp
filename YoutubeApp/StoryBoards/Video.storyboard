@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,6 +21,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qa9-Qb-96i">
+                                <rect key="frame" x="0.0" y="44" width="414" height="280"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7d-RZ-5ce">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -33,7 +37,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raJ-3g-I0C">
-                                <rect key="frame" x="0.0" y="324" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="324" width="414" height="572"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BsU-55-HLS">
                                         <rect key="frame" x="10" y="10" width="394" height="36.5"/>
@@ -99,7 +103,6 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="BsU-55-HLS" firstAttribute="leading" secondItem="raJ-3g-I0C" secondAttribute="leading" constant="10" id="3hR-Ng-ndB"/>
-                                    <constraint firstAttribute="height" constant="250" id="5ua-xf-iRU"/>
                                     <constraint firstAttribute="trailing" secondItem="wcL-s7-Xpf" secondAttribute="trailing" constant="10" id="D2J-0h-bsY"/>
                                     <constraint firstItem="wcL-s7-Xpf" firstAttribute="leading" secondItem="raJ-3g-I0C" secondAttribute="leading" constant="10" id="Mg6-Zz-dMY"/>
                                     <constraint firstItem="wcL-s7-Xpf" firstAttribute="top" secondItem="BsU-55-HLS" secondAttribute="bottom" constant="10" id="Zr0-8y-Cog"/>
@@ -111,15 +114,20 @@
                         <viewLayoutGuide key="safeArea" id="cFR-Sg-kQ7"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="p7d-RZ-5ce" firstAttribute="bottom" secondItem="raJ-3g-I0C" secondAttribute="bottom" id="04W-YY-0uZ"/>
                             <constraint firstAttribute="bottom" secondItem="p7d-RZ-5ce" secondAttribute="bottom" id="08w-dS-FRb"/>
-                            <constraint firstItem="raJ-3g-I0C" firstAttribute="trailing" secondItem="cFR-Sg-kQ7" secondAttribute="trailing" id="4xF-za-54a"/>
+                            <constraint firstItem="raJ-3g-I0C" firstAttribute="trailing" secondItem="p7d-RZ-5ce" secondAttribute="trailing" id="4xF-za-54a"/>
                             <constraint firstItem="p7d-RZ-5ce" firstAttribute="top" secondItem="cFR-Sg-kQ7" secondAttribute="top" id="5va-j2-W84"/>
+                            <constraint firstItem="Qa9-Qb-96i" firstAttribute="leading" secondItem="40S-6U-dFd" secondAttribute="leading" id="9Uj-H2-uNU"/>
                             <constraint firstItem="40S-6U-dFd" firstAttribute="top" secondItem="cFR-Sg-kQ7" secondAttribute="top" id="HFD-AM-dlD"/>
                             <constraint firstAttribute="bottom" secondItem="KeF-zQ-eb3" secondAttribute="bottom" id="JUG-0w-hlH"/>
-                            <constraint firstItem="raJ-3g-I0C" firstAttribute="leading" secondItem="cFR-Sg-kQ7" secondAttribute="leading" id="MM4-FH-DrU"/>
-                            <constraint firstItem="p7d-RZ-5ce" firstAttribute="trailing" secondItem="cFR-Sg-kQ7" secondAttribute="trailing" id="Pnc-e3-l60"/>
+                            <constraint firstItem="Qa9-Qb-96i" firstAttribute="top" secondItem="40S-6U-dFd" secondAttribute="top" id="Kre-iM-fgT"/>
+                            <constraint firstItem="raJ-3g-I0C" firstAttribute="leading" secondItem="p7d-RZ-5ce" secondAttribute="leading" id="MM4-FH-DrU"/>
+                            <constraint firstItem="p7d-RZ-5ce" firstAttribute="trailing" secondItem="4BA-kQ-VK0" secondAttribute="trailing" id="Pnc-e3-l60"/>
                             <constraint firstItem="40S-6U-dFd" firstAttribute="leading" secondItem="cFR-Sg-kQ7" secondAttribute="leading" id="R7r-aA-Rtn"/>
-                            <constraint firstItem="p7d-RZ-5ce" firstAttribute="leading" secondItem="cFR-Sg-kQ7" secondAttribute="leading" id="YGB-9M-mNU"/>
+                            <constraint firstItem="p7d-RZ-5ce" firstAttribute="leading" secondItem="40S-6U-dFd" secondAttribute="leading" id="YGB-9M-mNU"/>
+                            <constraint firstItem="Qa9-Qb-96i" firstAttribute="trailing" secondItem="p7d-RZ-5ce" secondAttribute="trailing" id="aWk-35-kvO"/>
+                            <constraint firstItem="40S-6U-dFd" firstAttribute="bottom" secondItem="Qa9-Qb-96i" secondAttribute="bottom" id="bR4-QB-mwa"/>
                             <constraint firstItem="KeF-zQ-eb3" firstAttribute="trailing" secondItem="cFR-Sg-kQ7" secondAttribute="trailing" id="c74-cv-FrK"/>
                             <constraint firstItem="KeF-zQ-eb3" firstAttribute="top" secondItem="4BA-kQ-VK0" secondAttribute="top" id="cBI-9E-HNm"/>
                             <constraint firstItem="40S-6U-dFd" firstAttribute="trailing" secondItem="cFR-Sg-kQ7" secondAttribute="trailing" id="dvQ-bx-XQ5"/>
@@ -129,9 +137,15 @@
                     </view>
                     <connections>
                         <outlet property="backView" destination="p7d-RZ-5ce" id="Cjx-XA-hCa"/>
+                        <outlet property="backViewBottomConstraint" destination="08w-dS-FRb" id="YT8-7Y-YZc"/>
+                        <outlet property="backViewTopConstraint" destination="5va-j2-W84" id="ETG-ay-Aqa"/>
+                        <outlet property="backViewTrailingConstraint" destination="Pnc-e3-l60" id="aun-mK-y70"/>
                         <outlet property="baseBackGroundView" destination="KeF-zQ-eb3" id="Rh3-QO-Qa5"/>
                         <outlet property="channelImageView" destination="H45-eE-uc8" id="WYf-Rr-MYc"/>
                         <outlet property="channelTitleLabel" destination="cqJ-vh-Z64" id="H9e-xk-iwy"/>
+                        <outlet property="describeView" destination="raJ-3g-I0C" id="wmO-9s-p40"/>
+                        <outlet property="describeViewTopConstraint" destination="x3F-C8-oRm" id="eSW-BU-b16"/>
+                        <outlet property="videoImageBackView" destination="Qa9-Qb-96i" id="CTt-pl-1CT"/>
                         <outlet property="videoImageView" destination="40S-6U-dFd" id="4PW-XN-Tq9"/>
                         <outlet property="videoImageViewHeightConstraint" destination="A6w-hf-lLT" id="uCn-aa-a2m"/>
                         <outlet property="videoImageViewLeadingConstraint" destination="R7r-aA-Rtn" id="IiQ-G5-jWa"/>
