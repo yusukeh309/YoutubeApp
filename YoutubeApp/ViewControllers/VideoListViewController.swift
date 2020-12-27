@@ -11,6 +11,16 @@ import Alamofire
 
 class VideoListViewController: UIViewController {
 
+    // MARK: Propeties
+    private var prevContentOffset: CGPoint = .init(x: 0, y: 0)
+    private let headerMoveHeight: CGFloat = 5
+    
+    private let cellId = "cellId"
+    private let atentionCellId = "atentionCellId"
+    private var videoItems = [Item]()
+    private var selectedItem: Item?
+    
+    // MARK: IBOutlets
     @IBOutlet weak var videoListCollectionView: UICollectionView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var headerView: UIView!
@@ -19,21 +29,26 @@ class VideoListViewController: UIViewController {
         
     @IBOutlet weak var bottomVideoImageView: UIImageView!
     @IBOutlet weak var bottomVideoView: UIView!
-    private var prevContentOffset: CGPoint = .init(x: 0, y: 0)
-    private let headerMoveHeight: CGFloat = 5
     
-    private let cellId = "cellId"
-    private let atentionCellId = "atentionCellId"
-    private var videoItems = [Item]()
+    // bottomImageViewの制約
+    @IBOutlet weak var bottomVideoViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var bottomVideoViewLeading: NSLayoutConstraint!
+    @IBOutlet weak var bottomVideoViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottomVideoViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var bottomVideoImageWidth: NSLayoutConstraint!
+    @IBOutlet weak var bottomVideoImageHeight: NSLayoutConstraint!
     
+    // MARK: LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         fetchYoutubeSerachInfo()
+        setupGestureRecognizer()
         NotificationCenter.default.addObserver(self, selector: #selector(showThumbnailImage), name: .init("thumbnailImage"), object: nil)
     }
     
+    // MARK: Methods
     @objc private func showThumbnailImage(notification: NSNotification) {
         
         guard let userInfo = notification.userInfo as? [String: UIImage] else { return }
@@ -53,8 +68,14 @@ class VideoListViewController: UIViewController {
         
         profileImageView.layer.cornerRadius = 20
         
+        view.bringSubviewToFront(bottomVideoView)
         bottomVideoView.isHidden = true
     }
+    
+}
+
+// MARK: - API通信
+extension VideoListViewController {
     
     private func fetchYoutubeSerachInfo() {
         let params = ["q": "lebronjames"]
@@ -78,24 +99,6 @@ class VideoListViewController: UIViewController {
             }
             
             self.videoListCollectionView.reloadData()
-        }
-    }
-    
-    private func headerViewEndAnimation() {
-        if headerTopConstraint.constant < -headerHeightConstraint.constant / 2 {
-            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.8, options: [], animations: {
-                
-                self.headerTopConstraint.constant = -self.headerHeightConstraint.constant
-                self.headerView.alpha = 0
-                self.view.layoutIfNeeded()
-            })
-        } else {
-            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.8, options: [], animations: {
-                
-                self.headerTopConstraint.constant = 0
-                self.headerView.alpha = 1
-                self.view.layoutIfNeeded()
-            })
         }
     }
     
@@ -155,8 +158,11 @@ extension VideoListViewController: UICollectionViewDelegate, UICollectionViewDat
         
         if videoItems.count == 0 {
             videoViewController.selectedItem = nil
+            self.selectedItem = nil
         } else {
-            videoViewController.selectedItem = indexPath.row > 2 ? videoItems[indexPath.row - 1] : videoItems[indexPath.row]
+            let item = indexPath.row > 2 ? videoItems[indexPath.row - 1] : videoItems[indexPath.row]
+            videoViewController.selectedItem = item
+            self.selectedItem = item
         }
         
         bottomVideoView.isHidden = true
@@ -196,8 +202,97 @@ extension VideoListViewController: UICollectionViewDelegate, UICollectionViewDat
             
             return cell
         }
-
     }
+    
+}
 
+// MARK: - animation関連
+extension VideoListViewController {
+    
+    private func setupGestureRecognizer() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panBottomVideoView))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapBottomVideoView))
+        bottomVideoView.addGestureRecognizer(tapGesture)
+        bottomVideoView.addGestureRecognizer(panGesture)
+    }
+    
+    @objc private func panBottomVideoView(sender: UIPanGestureRecognizer) {
+        let move = sender.translation(in: view)
+        
+        guard let imageView = sender.view else { return }
+        
+        if sender.state == .changed {
+            imageView.transform = CGAffineTransform(translationX: 0, y: move.y)
+        } else if sender.state == .ended {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: []) {
+                imageView.transform = .identity
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc private func tapBottomVideoView() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: []) {
+            self.bottomVideoViewExpandAnimation()
+        } completion: { _ in
+            let videoViewController = UIStoryboard(name: "Video", bundle: nil).instantiateViewController(identifier: "VideoViewController") as VideoViewController
+            videoViewController.selectedItem = self.selectedItem
+            
+            self.present(videoViewController, animated: false) {
+                self.bottomVideoViewBackToIdentity()
+            }
+        }
+    }
+    
+    private func bottomVideoViewExpandAnimation() {
+        let topSafeArea = self.view.safeAreaInsets.top
+        let bottomSafeArea = self.view.safeAreaInsets.bottom
+        
+        // bottomVideoView
+        bottomVideoViewLeading.constant = 0
+        bottomVideoViewTrailing.constant = 0
+        bottomVideoViewBottom.constant = -bottomSafeArea
+        bottomVideoViewHeight.constant = view.frame.height - topSafeArea
+        
+        // bottomVideoImageView
+        bottomVideoImageWidth.constant = view.frame.width
+        bottomVideoImageHeight.constant = 280
+        
+        self.tabBarController?.tabBar.isHidden = true
+        self.view.layoutIfNeeded()
+    }
+    
+    private func bottomVideoViewBackToIdentity() {
+        // bottomVideoView
+        bottomVideoViewLeading.constant = 12
+        bottomVideoViewTrailing.constant = 12
+        bottomVideoViewBottom.constant = 20
+        bottomVideoViewHeight.constant = 70
+        
+        // bottomVideoImageView
+        bottomVideoImageWidth.constant = 150
+        bottomVideoImageHeight.constant = 70
+        
+        bottomVideoView.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func headerViewEndAnimation() {
+        if headerTopConstraint.constant < -headerHeightConstraint.constant / 2 {
+            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.8, options: [], animations: {
+                
+                self.headerTopConstraint.constant = -self.headerHeightConstraint.constant
+                self.headerView.alpha = 0
+                self.view.layoutIfNeeded()
+            })
+        } else {
+            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.8, options: [], animations: {
+                
+                self.headerTopConstraint.constant = 0
+                self.headerView.alpha = 1
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
     
 }

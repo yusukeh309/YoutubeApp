@@ -46,6 +46,7 @@
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="upU-iC-79X"/>
+                                            <constraint firstAttribute="height" constant="70" id="yWE-fF-bSf"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -54,7 +55,6 @@
                                     <constraint firstItem="4LG-sX-Iuv" firstAttribute="leading" secondItem="wL3-rY-44M" secondAttribute="leading" id="YbC-iK-J1O"/>
                                     <constraint firstAttribute="height" constant="70" id="hAY-dH-8My"/>
                                     <constraint firstItem="4LG-sX-Iuv" firstAttribute="top" secondItem="wL3-rY-44M" secondAttribute="top" id="mG4-3t-g98"/>
-                                    <constraint firstAttribute="bottom" secondItem="4LG-sX-Iuv" secondAttribute="bottom" id="sqM-2r-lyP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-Z1-fac">
@@ -131,8 +131,14 @@
                     <tabBarItem key="tabBarItem" title="Item" id="3ZR-oy-fmk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomVideoImageHeight" destination="yWE-fF-bSf" id="rJQ-aM-sls"/>
                         <outlet property="bottomVideoImageView" destination="4LG-sX-Iuv" id="ufc-8b-0g6"/>
+                        <outlet property="bottomVideoImageWidth" destination="upU-iC-79X" id="zpR-tG-H1Q"/>
                         <outlet property="bottomVideoView" destination="wL3-rY-44M" id="uf4-f5-2Ed"/>
+                        <outlet property="bottomVideoViewBottom" destination="Vzi-7c-hku" id="Wqp-GZ-pe9"/>
+                        <outlet property="bottomVideoViewHeight" destination="hAY-dH-8My" id="QRM-HY-eqK"/>
+                        <outlet property="bottomVideoViewLeading" destination="4Vg-oT-cLe" id="HvR-8P-1mX"/>
+                        <outlet property="bottomVideoViewTrailing" destination="E9Z-KK-EW6" id="m5v-XN-WL4"/>
                         <outlet property="headerHeightConstraint" destination="jGy-ft-1wU" id="4Ne-pj-8ka"/>
                         <outlet property="headerTopConstraint" destination="szd-AA-Hbs" id="FVf-zF-pZv"/>
                         <outlet property="headerView" destination="xfZ-Z1-fac" id="7Mu-QY-dHe"/>
