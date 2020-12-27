@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Video List View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="VideoListViewController" customModule="YoutubeApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,8 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7an-4e-cbg">
-                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="709"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3zE-l4-0oS">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,6 +38,25 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wL3-rY-44M">
+                                <rect key="frame" x="12" y="723" width="390" height="70"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4LG-sX-Iuv">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="upU-iC-79X"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4LG-sX-Iuv" firstAttribute="leading" secondItem="wL3-rY-44M" secondAttribute="leading" id="YbC-iK-J1O"/>
+                                    <constraint firstAttribute="height" constant="70" id="hAY-dH-8My"/>
+                                    <constraint firstItem="4LG-sX-Iuv" firstAttribute="top" secondItem="wL3-rY-44M" secondAttribute="top" id="mG4-3t-g98"/>
+                                    <constraint firstAttribute="bottom" secondItem="4LG-sX-Iuv" secondAttribute="bottom" id="sqM-2r-lyP"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-Z1-fac">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <subviews>
@@ -92,19 +113,26 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wL3-rY-44M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="4Vg-oT-cLe"/>
                             <constraint firstItem="7an-4e-cbg" firstAttribute="top" secondItem="xfZ-Z1-fac" secondAttribute="bottom" id="AFt-HH-7Lu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wL3-rY-44M" secondAttribute="trailing" constant="12" id="E9Z-KK-EW6"/>
                             <constraint firstItem="xfZ-Z1-fac" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EQL-rw-Vh4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7an-4e-cbg" secondAttribute="trailing" id="LKD-x4-fUe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wL3-rY-44M" secondAttribute="bottom" constant="20" id="Vzi-7c-hku"/>
                             <constraint firstItem="7an-4e-cbg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xco-hN-kpv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7an-4e-cbg" secondAttribute="bottom" id="ejd-Q4-ne1"/>
                             <constraint firstItem="xfZ-Z1-fac" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hQK-kY-Zia"/>
                             <constraint firstItem="xfZ-Z1-fac" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="szd-AA-Hbs"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="3ZR-oy-fmk"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomVideoImageView" destination="4LG-sX-Iuv" id="ufc-8b-0g6"/>
+                        <outlet property="bottomVideoView" destination="wL3-rY-44M" id="uf4-f5-2Ed"/>
                         <outlet property="headerHeightConstraint" destination="jGy-ft-1wU" id="4Ne-pj-8ka"/>
                         <outlet property="headerTopConstraint" destination="szd-AA-Hbs" id="FVf-zF-pZv"/>
                         <outlet property="headerView" destination="xfZ-Z1-fac" id="7Mu-QY-dHe"/>
@@ -122,5 +150,11 @@
         <image name="kylie_irving" width="678" height="452"/>
         <image name="movie-icon" width="256" height="256"/>
         <image name="search" width="256" height="256"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

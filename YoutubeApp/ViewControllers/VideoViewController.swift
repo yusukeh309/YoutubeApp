@@ -79,9 +79,7 @@ class VideoViewController: UIViewController {
         channelTitleLabel.text = selectedItem?.channel?.items[0].snippet.title
         
         let panGeture = UIPanGestureRecognizer(target: self, action: #selector(panVideoImageView))
-        videoImageView.addGestureRecognizer(panGeture)
-        
-        print("videoImageMaxY: ", videoImageMaxY)
+        videoImageView.addGestureRecognizer(panGeture)        
     }
     
     @objc private func panVideoImageView(gesture: UIPanGestureRecognizer) {
@@ -100,60 +98,98 @@ class VideoViewController: UIViewController {
             videoImageBackView.transform = CGAffineTransform(translationX: 0, y: move.y)
             
             // 左右のpadding設定
-            let movingConstant = move.y / 30
-            
-            if movingConstant <= 12 {
-                videoImageViewTrailingConstraint.constant = -movingConstant
-                videoImageViewLeadingConstraint.constant = movingConstant
-                
-                backViewTrailingConstraint.constant = -movingConstant
-            }
+            self.adjustPaddingChange(move: move)
             
             // imageViewの高さの動き
             // 280(最大値) - 70(最小値) = 210
-            let parantViewHeight = self.view.frame.height
-            let heightRatio = 210 / (parantViewHeight - (parantViewHeight / 6))
-            let moveHeight = move.y * heightRatio
-            
-            backViewTopConstraint.constant = move.y
-            videoImageViewHeightConstraint.constant = 280 - moveHeight
-            describeViewTopConstraint.constant = move.y * 0.8
-            
-            let bottomMoveY = parantViewHeight - videoImageMaxY
-            let bottomMoveRatio = bottomMoveY / videoImageMaxY
-            let bottomMoveConstant = move.y * bottomMoveRatio
-            backViewBottomConstraint.constant = bottomMoveConstant
-            
+            self.adjustHeightChange(move: move)
+
             // alpha値の設定
-            let alphaRatio = move.y / (parantViewHeight / 2)
-            describeView.alpha = 1 - alphaRatio
-            baseBackGroundView.alpha = 1 - alphaRatio
-            
+            self.adjustAlphaChange(move: move)
+
             // imageViewの横幅の動き 150(最小値)
-            let originalWidth = self.view.frame.width
-            let constant = originalWidth - move.y
-            
-            if minimumImageViewTrailingConstant > constant {
-                videoImageViewTrailingConstraint.constant = minimumImageViewTrailingConstant
-                return
-            }
-            
-            if constant < -12 {
-                videoImageViewTrailingConstraint.constant = constant
-            }            
+            self.adjustWidthChange(move: move)
             
         } else if gesture.state == .ended {
             
-            if move.y < self.view.frame.height / 3 {
-                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [], animations: {
+            self.imageViewEndedAnimation(move: move, imageView: imageView as! UIImageView)
+
+        }
+    }
+    
+    // MARK: imageViewのpanGestureのstatusが、[.change]の時の動き
+    private func adjustPaddingChange(move: CGPoint) {
+        let movingConstant = move.y / 30
+        
+        if movingConstant <= 12 {
+            videoImageViewTrailingConstraint.constant = -movingConstant
+            videoImageViewLeadingConstraint.constant = movingConstant
+            
+            backViewTrailingConstraint.constant = -movingConstant
+        }
+    }
+    
+    private func adjustHeightChange(move: CGPoint) {
+        let parantViewHeight = self.view.frame.height
+        let heightRatio = 210 / (parantViewHeight - (parantViewHeight / 6))
+        let moveHeight = move.y * heightRatio
+        
+        backViewTopConstraint.constant = move.y
+        videoImageViewHeightConstraint.constant = 280 - moveHeight
+        describeViewTopConstraint.constant = move.y * 0.8
+        
+        let bottomMoveY = parantViewHeight - videoImageMaxY
+        let bottomMoveRatio = bottomMoveY / videoImageMaxY
+        let bottomMoveConstant = move.y * bottomMoveRatio
+        backViewBottomConstraint.constant = bottomMoveConstant
+    }
+    
+    private func adjustAlphaChange(move: CGPoint) {
+        let alphaRatio = move.y / (self.view.frame.height / 2)
+        describeView.alpha = 1 - alphaRatio
+        baseBackGroundView.alpha = 1 - alphaRatio
+    }
+    
+    private func adjustWidthChange(move: CGPoint) {
+        let originalWidth = self.view.frame.width
+        let constant = originalWidth - move.y
+        
+        if minimumImageViewTrailingConstant > constant {
+            videoImageViewTrailingConstraint.constant = minimumImageViewTrailingConstant
+            return
+        }
+        
+        if constant < -12 {
+            videoImageViewTrailingConstraint.constant = constant
+        }
+    }
+    
+    // MARK: imageViewのpanGestureのstatusが、[.ended]の時の動き
+    private func imageViewEndedAnimation(move: CGPoint, imageView: UIImageView) {
+        if move.y < self.view.frame.height / 3 {
+            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [], animations: {
+                
+                self.backToIdentityAllViews(imageView: imageView)
+            })
+        } else {
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: []) {
+                
+                self.moveToBottom(imageView: imageView)
+                
+            } completion: { _ in
+                
+                UIView.animate(withDuration: 0.2) {
                     
-                    self.backToIdentityAllViews(imageView: imageView as! UIImageView)
-                })
-            } else {
-                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: []) {
+                    self.videoImageView.isHidden = true
+                    self.videoImageBackView.isHidden = true
                     
-                    self.moveToBottom(imageView: imageView as! UIImageView)
+                    let image = self.videoImageView.image
+                    let userInfo: [String: UIImage?] = ["image": image]
                     
+                    NotificationCenter.default.post(name: .init("thumbnailImage"), object: nil, userInfo: userInfo as [AnyHashable : Any])
+                    
+                } completion: { _ in
+                    self.dismiss(animated: false, completion: nil)
                 }
             }
         }
