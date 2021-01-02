@@ -29,6 +29,7 @@ class VideoListViewController: UIViewController {
         
     @IBOutlet weak var bottomVideoImageView: UIImageView!
     @IBOutlet weak var bottomVideoView: UIView!
+    @IBOutlet weak var searchButton: UIButton!
     
     // bottomImageViewの制約
     @IBOutlet weak var bottomVideoViewTrailing: NSLayoutConstraint!
@@ -37,6 +38,10 @@ class VideoListViewController: UIViewController {
     @IBOutlet weak var bottomVideoViewBottom: NSLayoutConstraint!
     @IBOutlet weak var bottomVideoImageWidth: NSLayoutConstraint!
     @IBOutlet weak var bottomVideoImageHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottomSubscribeView: UIView!
+    @IBOutlet weak var bottomCloseButton: UIButton!
+    @IBOutlet weak var bottomVideoTitleLabel: UILabel!
+    @IBOutlet weak var bottomVideoDescribeLabel: UILabel!
     
     // MARK: LifeCycle Methods
     override func viewDidLoad() {
@@ -51,11 +56,18 @@ class VideoListViewController: UIViewController {
     // MARK: Methods
     @objc private func showThumbnailImage(notification: NSNotification) {
         
-        guard let userInfo = notification.userInfo as? [String: UIImage] else { return }
-        let image = userInfo["image"]
+        guard let userInfo = notification.userInfo as? [String: Any],
+              let image = userInfo["image"] as? UIImage,
+              let videoImageMinY = userInfo["videoImageMinY"] as? CGFloat else { return }
         
+        let diffBottomConstant = videoImageMinY - self.bottomVideoView.frame.minY
+        
+        bottomVideoViewBottom.constant -= diffBottomConstant
+        bottomSubscribeView.isHidden = false
         bottomVideoView.isHidden = false
         bottomVideoImageView.image = image
+        bottomVideoTitleLabel.text = self.selectedItem?.snippet.title
+        bottomVideoDescribeLabel.text = self.selectedItem?.snippet.description
         
     }
     
@@ -70,6 +82,26 @@ class VideoListViewController: UIViewController {
         
         view.bringSubviewToFront(bottomVideoView)
         bottomVideoView.isHidden = true
+        
+        bottomCloseButton.addTarget(self, action: #selector(tappedCottomCloseButton), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(tappedSearchButton), for: .touchUpInside)
+    }
+    
+    @objc private func tappedSearchButton() {
+        let searchController = SearchViewController()
+        let nav = UINavigationController(rootViewController: searchController)
+        self.present(nav, animated: true, completion: nil)
+        
+    }
+    
+    @objc private func tappedCottomCloseButton() {
+        UIView.animate(withDuration: 0.2) {
+            self.bottomVideoViewBottom.constant = -150
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.bottomVideoView.isHidden = true
+            self.selectedItem = nil
+        }
     }
     
 }
@@ -233,6 +265,7 @@ extension VideoListViewController {
     
     @objc private func tapBottomVideoView() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: []) {
+            self.bottomSubscribeView.isHidden = true
             self.bottomVideoViewExpandAnimation()
         } completion: { _ in
             let videoViewController = UIStoryboard(name: "Video", bundle: nil).instantiateViewController(identifier: "VideoViewController") as VideoViewController

@@ -49,12 +49,58 @@
                                             <constraint firstAttribute="height" constant="70" id="yWE-fF-bSf"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWd-Aj-GkP">
+                                        <rect key="frame" x="150" y="0.0" width="240" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJw-ug-4rM">
+                                                <rect key="frame" x="194" y="0.0" width="46" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="3lw-IB-T7m"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                                                <state key="normal" title="×">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VWG-3X-N3c">
+                                                <rect key="frame" x="5" y="5" width="189" height="60"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ビデオのタイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKR-aa-qho">
+                                                        <rect key="frame" x="0.0" y="0.0" width="189" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ビデオの説明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbM-6n-uZJ">
+                                                        <rect key="frame" x="0.0" y="30" width="189" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="VWG-3X-N3c" secondAttribute="bottom" constant="5" id="4H6-ok-Add"/>
+                                            <constraint firstItem="VWG-3X-N3c" firstAttribute="top" secondItem="RWd-Aj-GkP" secondAttribute="top" constant="5" id="Hh7-2D-5mT"/>
+                                            <constraint firstItem="VWG-3X-N3c" firstAttribute="leading" secondItem="RWd-Aj-GkP" secondAttribute="leading" constant="5" id="Osr-wF-kiW"/>
+                                            <constraint firstAttribute="trailing" secondItem="BJw-ug-4rM" secondAttribute="trailing" id="TpV-2o-NxP"/>
+                                            <constraint firstItem="BJw-ug-4rM" firstAttribute="top" secondItem="RWd-Aj-GkP" secondAttribute="top" id="VFt-Q5-Psl"/>
+                                            <constraint firstAttribute="bottom" secondItem="BJw-ug-4rM" secondAttribute="bottom" id="jLJ-zh-r87"/>
+                                            <constraint firstItem="BJw-ug-4rM" firstAttribute="leading" secondItem="VWG-3X-N3c" secondAttribute="trailing" id="veq-UJ-iIN"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="RWd-Aj-GkP" secondAttribute="bottom" id="MXo-Fa-Grx"/>
+                                    <constraint firstItem="RWd-Aj-GkP" firstAttribute="top" secondItem="wL3-rY-44M" secondAttribute="top" id="RD5-SF-b9E"/>
                                     <constraint firstItem="4LG-sX-Iuv" firstAttribute="leading" secondItem="wL3-rY-44M" secondAttribute="leading" id="YbC-iK-J1O"/>
+                                    <constraint firstAttribute="trailing" secondItem="RWd-Aj-GkP" secondAttribute="trailing" id="cKW-bE-HYg"/>
                                     <constraint firstAttribute="height" constant="70" id="hAY-dH-8My"/>
                                     <constraint firstItem="4LG-sX-Iuv" firstAttribute="top" secondItem="wL3-rY-44M" secondAttribute="top" id="mG4-3t-g98"/>
+                                    <constraint firstItem="RWd-Aj-GkP" firstAttribute="leading" secondItem="4LG-sX-Iuv" secondAttribute="trailing" id="sga-C6-Xiq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfZ-Z1-fac">
@@ -131,9 +177,13 @@
                     <tabBarItem key="tabBarItem" title="Item" id="3ZR-oy-fmk"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomCloseButton" destination="BJw-ug-4rM" id="xbE-99-0Lg"/>
+                        <outlet property="bottomSubscribeView" destination="RWd-Aj-GkP" id="z8N-zY-3Ry"/>
+                        <outlet property="bottomVideoDescribeLabel" destination="bbM-6n-uZJ" id="sPy-tG-cDn"/>
                         <outlet property="bottomVideoImageHeight" destination="yWE-fF-bSf" id="rJQ-aM-sls"/>
                         <outlet property="bottomVideoImageView" destination="4LG-sX-Iuv" id="ufc-8b-0g6"/>
                         <outlet property="bottomVideoImageWidth" destination="upU-iC-79X" id="zpR-tG-H1Q"/>
+                        <outlet property="bottomVideoTitleLabel" destination="IKR-aa-qho" id="qhR-IN-PrZ"/>
                         <outlet property="bottomVideoView" destination="wL3-rY-44M" id="uf4-f5-2Ed"/>
                         <outlet property="bottomVideoViewBottom" destination="Vzi-7c-hku" id="Wqp-GZ-pe9"/>
                         <outlet property="bottomVideoViewHeight" destination="hAY-dH-8My" id="QRM-HY-eqK"/>
@@ -143,6 +193,7 @@
                         <outlet property="headerTopConstraint" destination="szd-AA-Hbs" id="FVf-zF-pZv"/>
                         <outlet property="headerView" destination="xfZ-Z1-fac" id="7Mu-QY-dHe"/>
                         <outlet property="profileImageView" destination="Med-sn-Tb4" id="ySe-dW-C73"/>
+                        <outlet property="searchButton" destination="CoA-sW-eMp" id="Moy-cD-8zS"/>
                         <outlet property="videoListCollectionView" destination="7an-4e-cbg" id="Qze-1H-fQq"/>
                     </connections>
                 </viewController>
