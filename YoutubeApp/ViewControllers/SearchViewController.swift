@@ -75,6 +75,17 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let prevController = self.presentingViewController as! BaseTabBarController
+        let videList = prevController.viewControllers?[0] as! VideoListViewController
+        
+        videList.selectedItem = video?.items[indexPath.row]
+        
+        dismiss(animated: true) {
+            NotificationCenter.default.post(name: .init("searchedItem"), object: nil)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width
         return .init(width: width, height: width)
